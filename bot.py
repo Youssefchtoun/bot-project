@@ -13,6 +13,8 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 # Create a .env file in the project root with BOT_TOKEN=your_token and DO NOT commit it.
 load_dotenv()
 
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -32,7 +34,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def main() -> None:
-    token = os.getenv("BOT_TOKEN")
+    token = BOT_TOKEN
     if not token:
         raise SystemExit("Please set BOT_TOKEN environment variable or create a .env with BOT_TOKEN")
 
